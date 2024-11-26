@@ -3,13 +3,13 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = ""; // changing this wont change the goatbot V2 of list cmd it is just a decoyy
+const doNotDelete = "[ TARIF ]"; // changing this wont change the goatbot V2 of list cmd it is just a decoyy
 
 module.exports = {
   config: {
     name: "help2",
     version: "1.17",
-    author: "NTKhang", // original author Kshitiz 
+    author: "ArYan",
     countDown: 5,
     role: 0,
     shortDescription: {
@@ -18,7 +18,7 @@ module.exports = {
     longDescription: {
       en: "View command usage and list all commands directly",
     },
-    category: "info",
+    category: "𝗔𝗟𝗟 𝗖𝗠𝗗",
     guide: {
       en: "{pn} / help cmdName ",
     },
@@ -46,25 +46,24 @@ module.exports = {
 
       Object.keys(categories).forEach((category) => {
         if (category !== "info") {
-          msg += `\n┏━➢ ${category.toUpperCase()} ❮`;
+          msg += `\n╭─☺︎︎『  ${category.toUpperCase()}  』`;
 
 
           const names = categories[category].commands.sort();
           for (let i = 0; i < names.length; i += 3) {
-            const cmds = names.slice(i, i + 2).map((item) => `✧${item}`);
-            msg += `\n┃${cmds.join(" ".repeat(Math.max(1, 5 - cmds.join("").length)))}`;
+            const cmds = names.slice(i, i + 2).map((item) => `▪ ${item}`);
+            msg += `\n│${cmds.join(" ".repeat(Math.max(1, 5 - cmds.join("").length)))}`;
           }
 
-          msg += `\n┗━━━━━━━━━━━☺︎︎`;
+          msg += `\n╰────────────☺︎︎`;
         }
       });
 
       const totalCommands = commands.size;
-      msg += `\n\┏━➢[ 𝙀𝙉𝙅𝙊𝙔|𝙄𝙉𝙁𝙊 ]\
-
-╰‣> Total cmd: [${totalCommands}].\n╰‣tryp: [ ${prefix}help <cmd>\n╰‣to learn the usage.]\n`;
+      msg += `\n\n╭─☺︎︎『Ꮇʀ✓┳ꋬɾ꒐ᶠ✓𝐱130 』\    		╰‣ Total commands: [ ${totalCommands} ].\n╰‣ all cmd ${prefix}Help ƚɾყρ\n`;
       msg += ``;
-      msg += `\╰‣ Admin:亗 ɱʀ ƬʌʀᎥʆ 亗\n╰‣ Fb: https://m.me/Mr.tarif.yt.x130  ]\n`; // its not decoy so change it if you want 
+      msg += `\╰‣ Admin :亗 ɱʀ ƬʌʀᎥʆ Ƴt  
+╰‣ FB:ID: https://m.me/Mr.tarif.yt.x130`; // its not decoy so change it if you want 
 
 
       await message.reply({
@@ -86,19 +85,22 @@ module.exports = {
         const guideBody = configCommand.guide?.en || "No guide available.";
         const usage = guideBody.replace(/{p}/g, prefix).replace(/{n}/g, configCommand.name);
 
-        const response = `┏━━ NAME ━━━━━☺︎︎
-┃ ${configCommand.name}
-┣━━☺︎︎ INFO
-┃ Description: ${longDescription}
-┃ Other names: ${configCommand.aliases ? configCommand.aliases.join(", ") : "Do not have"}
-┃ Other names in your group: Do not have
-┃ Version: ${configCommand.version || "1.0"}
-┃ Role: ${roleText}
-┃ Time per command: ${configCommand.countDown || 1}s
-┃ Author: ${author}
-┣━━☺︎︎ Usage
-┃ ${usage}
-┗━━━━━━━━━━━━━➢`;
+        const response = `╭── NAME ────☺︎︎
+  │ ${configCommand.name}
+  ├──☺︎︎ INFO
+  │ Description: ${longDescription}
+  │ Other names: ${configCommand.aliases ? configCommand.aliases.join(", ") : "Do not have"}
+  │ Other names in your group: Do not have
+  │ Version: ${configCommand.version || "1.0"}
+  │ Role: ${roleText}
+  │ Time per command: ${configCommand.countDown || 1}s
+  │ Author: ${author}
+  ├──☺︎︎ Usage
+  │ ${usage}
+  ├──☺︎︎ Notes
+  │ The content inside <XXXXX> can be changed
+  │ The content inside [a|b|c] is a or b or c
+  ╰────────────☺︎︎`;
 
         await message.reply(response);
       }
